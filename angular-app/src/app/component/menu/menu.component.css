@@ -1,0 +1,29 @@
+.menu {
+    background-color: #369;
+    color: white;
+    height: 50px;
+    font: 12pt Verdana;
+  }
+  
+  .menu-item {
+    display: inline-block;
+    height: 30px;
+    padding: 10px;
+  }
+  
+  .menu-item a { 
+    text-decoration: none; 
+    color: inherit;
+    vertical-align: middle;
+  }
+  
+  .menu-item:hover {
+    background-color: azure;
+    color: black;
+    cursor: pointer;
+  }
+
+  .menu-item.active {
+    color: yellow;
+    background-color: #000;
+  }
