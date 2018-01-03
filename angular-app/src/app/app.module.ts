@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { SnsTesterComponent } from './sns-tester/sns-tester.component';
+import { SnsTesterComponent } from './component/sns-tester/sns-tester.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { MenuComponent } from './menu/menu.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { MenuComponent } from './component/menu/menu.component';
 
 
 @NgModule({
