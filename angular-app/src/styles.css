@@ -18,8 +18,62 @@ button.go:hover {
     cursor: pointer;
 }
 
-.col-6 {
-    width: 48%;
+.container {
+    margin: 25px;
+  }
+
+.row {
+    margin: 20px 0;
+}
+
+.label,
+.input {
+    display: inline-block;
+}
+
+.label {
+    text-align: right;
+    white-space: nowrap;
+    width: 200px;
+}
+
+.input input {
+    width: 200px;
+}
+
+.col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-12 {
     display: inline-block;
     vertical-align: top;
+}
+
+.col-3 {
+    width: 24%;
+}
+
+.col-4 {
+    width: 32%;
+}
+
+.col-5 {
+    width: 40%;
+}
+
+.col-6 {
+    width: 48%;
+}
+
+.col-7 {
+    width: 56%;
+}
+
+.col-8 {
+    width: 64%;
+}
+
+.col-9 {
+    width: 72%;
+}
+
+.col-12 {
+    width: 100%;
 }

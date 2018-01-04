@@ -11,7 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http/src/response';
 })
 export class SnsMessageComponent implements OnInit {
 	snsMessage: SnsMessage = { deploymentName: '', urls: '', accountId: '186148884772', region: 'us-east-1', subject: 'DAVID_TEST', users: '' };
-	returnedResponse: SnsResponse = { HttpStatusCode: 0, MetaData: {"": ""} };
+	returnedResponse: SnsResponse = { HttpStatusCode: 0, MetaData: {"WAITING": "No Message Sent"} };
 	constructor(private snsService: SnsService) { };
 
 	ngOnInit() { };
@@ -25,8 +25,5 @@ export class SnsMessageComponent implements OnInit {
 	messagePosted(response) {
 		console.log(JSON.stringify(response));
 		this.returnedResponse = response;
-	};
-	metaData() : Array<string>{
-		return Object.keys(this.returnedResponse.MetaData);
 	};
 }

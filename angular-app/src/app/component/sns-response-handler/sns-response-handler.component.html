@@ -1,0 +1,16 @@
+<div>
+	<div class="row">
+		<div class="label">Results:</div>
+		<div class="input">
+			<div class="label">HTTP Status code:</div>
+			<div class="input">{{snsResponse.HttpStatusCode}}</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="label">&nbsp;</div>
+		<div class="input" *ngFor="let key of metaData()">
+			<div class="label">{{key}}:&nbsp;</div>
+			<div class="input">{{snsResponse.MetaData[key]}}</div>
+		</div>
+	</div>
+</div>

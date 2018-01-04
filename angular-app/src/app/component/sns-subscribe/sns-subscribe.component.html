@@ -1,0 +1,40 @@
+<div>
+    <app-sns-menu></app-sns-menu>
+</div>
+<div class="container col-12">
+    <div class="col-5">
+        <div class="row">
+            <div class="label">
+                Subject:
+            </div>
+            <div class="input">
+                <input type="text" [(ngModel)]="subscription.subject" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">
+                Endpoint:
+            </div>
+            <div class="input">
+                <input type="text" [(ngModel)]="subscription.endpoint" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">
+                Protocol:
+            </div>
+            <div class="input">
+                <input type="text" [(ngModel)]="subscription.protocol" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">&nbsp;</div>
+            <div class="input">
+                <button class="go" (click)="submitSubscription()">Subscribe</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-7">
+        <app-sns-response-handler [snsResponse]="snsResponse"></app-sns-response-handler>
+    </div>
+</div>

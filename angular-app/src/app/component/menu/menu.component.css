@@ -12,7 +12,7 @@
     padding: 10px;
   }
   
-  .menu-item a { 
+  .menu-item span { 
     text-decoration: none; 
     color: inherit;
     vertical-align: middle;

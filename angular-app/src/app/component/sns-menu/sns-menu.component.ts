@@ -8,7 +8,9 @@ import { MenuItem } from '../../model/menu-item';
 })
 export class SnsMenuComponent implements OnInit {
   menuItems: MenuItem[] = [
-    { order: 1, displayName: 'Send Message', routerLink: '/sns-message'}
+    { order: 1, displayName: 'Create Topic', routerLink: '/sns-topic' },
+    { order: 2, displayName: 'Subscribe', routerLink: '/sns-subscribe'},
+    { order: 3, displayName: 'Send Message', routerLink: '/sns-message'}
   ];
 
   constructor() { }

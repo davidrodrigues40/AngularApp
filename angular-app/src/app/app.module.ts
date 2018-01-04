@@ -10,6 +10,9 @@ import { SnsMessageComponent } from './component/sns-message/sns-message.compone
 import { SnsMenuComponent } from './component/sns-menu/sns-menu.component';
 import { SnsService } from './service/sns.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { SnsTopicComponent } from './component/sns-topic/sns-topic.component';
+import { SnsResponseHandler } from './component/sns-response-handler/sns-response-handler.component';
+import { SnsSubscribeComponent } from './component/sns-subscribe/sns-subscribe.component';
 
 
 @NgModule({
@@ -19,7 +22,10 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     DashboardComponent,
     MenuComponent,
     SnsMessageComponent,
-    SnsMenuComponent
+    SnsMenuComponent,
+    SnsTopicComponent,
+    SnsResponseHandler,
+    SnsSubscribeComponent
   ],
   imports: [
     BrowserModule,
