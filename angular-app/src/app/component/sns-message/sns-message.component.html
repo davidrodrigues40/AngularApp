@@ -1,0 +1,63 @@
+<div>
+	<app-sns-menu></app-sns-menu>
+</div>
+<div class="container">
+	<div class="col-6">
+		<div class="row">
+			<div class="label">
+				Deployment Name:
+			</div>
+			<div class="input">
+				<input type="text" [(ngModel)]="snsMessage.deploymentName" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="label">
+				Urls:
+			</div>
+			<div class="input">
+				<input type="text" [(ngModel)]="snsMessage.urls" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="label">
+				Users:
+			</div>
+			<div class="input">
+				<input type="text" [(ngModel)]="snsMessage.users" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="label">
+				Subject:
+			</div>
+			<div class="input">
+				<input type="text" [(ngModel)]="snsMessage.subject" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="label">&nbsp;</div>
+			<div class="input">
+				<button class="go" (click)="submitMessage()">Submit Message</button>
+			</div>
+		</div>
+	</div>
+	<div class="col-6">
+		<div class="row">
+			Results:
+		</div>
+		<div class="row">
+			<div class="label">HTTP Status code:</div>
+			<div class="input">{{returnedResponse.HttpStatusCode}}</div>
+		</div>
+		<div class="row">
+			<div class="label">Meta Data:</div>
+			<div class="input">
+				<div class="row" *ngFor="let key of metaData()">
+					<div class="label">{{key}}:&nbsp;</div>
+					<div class="input">{{returnedResponse.MetaData[key]}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

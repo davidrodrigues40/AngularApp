@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+button.go {
+    background-color: rgb(119, 207, 19);
+    border: none;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+}
+
+button.go:hover {
+    background-color: #74a14a;
+    cursor: pointer;
+}
+
+.col-6 {
+    width: 48%;
+    display: inline-block;
+    vertical-align: top;
+}

@@ -1,0 +1,22 @@
+.container {
+    margin: 25px;
+  }
+
+.row {
+    margin: 20px;
+}
+
+.label,
+.input {
+    display: inline-block;
+}
+
+.label {
+    text-align: right;
+    white-space: nowrap;
+    width: 200px;
+}
+
+.input input {
+    width: 200px;
+}

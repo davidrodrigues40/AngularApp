@@ -1,0 +1,5 @@
+<ol class="menu">
+  <li class="menu-item" *ngFor="let item of menuItems" [routerLinkActive]="['active']">
+      <span [routerLink]="[item.routerLink]">{{ item.displayName }}</span>
+  </li>
+</ol>
