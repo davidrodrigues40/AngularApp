@@ -1,4 +1,4 @@
 <select (change)="changeTopic($event.target.value)">
-    <option vlaue="">-- Select Topoic --</option>
-    <option *ngFor="let topic of topics" value="{{topic.DisplayName}}">{{topic.DisplayName}}</option>
+    <option value="">-- Select Topoic --</option>
+    <option *ngFor="let topic of topics" [selected]="initialValue === topic.DisplayName" [ngValue]="topic.DisplayName">{{topic.DisplayName}}</option>
 </select>

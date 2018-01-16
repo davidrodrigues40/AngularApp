@@ -13,10 +13,6 @@ export class SnsSubscribeComponent implements OnInit {
     subscription: SnsSubscription = { endpoint: '', protocol: '',  accountId: '186148884772', region: 'us-east-1', subject: '' };
     topics: SnsTopicListItem[];
     constructor(private snsService: SnsService) { 
-        snsService.getTopics()
-            .subscribe(
-                response => { this.topics = response; },
-                (err: HttpErrorResponse) => { console.log("An error has occurred"); });
     }
 
     ngOnInit() {

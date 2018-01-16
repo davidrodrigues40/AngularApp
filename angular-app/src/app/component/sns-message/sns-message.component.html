@@ -32,7 +32,7 @@
 				Subject:
 			</div>
 			<div class="input">
-				<input type="text" [(ngModel)]="snsMessage.subject" />
+                <app-topic-selector (topicChanged)="setSubject($event)" [initialValue]="snsMessage.subject"></app-topic-selector>
 			</div>
 		</div>
 		<div class="row">

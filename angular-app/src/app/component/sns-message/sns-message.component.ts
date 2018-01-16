@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SnsService } from '../../service/sns.service';
 import { SnsMenuComponent } from '../sns-menu/sns-menu.component';
-import { SnsMessage, SnsResponse } from '../../model/sns-objects';
+import { SnsMessage, SnsResponse, SnsTopicListItem } from '../../model/sns-objects';
 import { HttpErrorResponse } from '@angular/common/http/src/response';
 
 @Component({
@@ -12,7 +12,9 @@ import { HttpErrorResponse } from '@angular/common/http/src/response';
 export class SnsMessageComponent implements OnInit {
 	snsMessage: SnsMessage = { deploymentName: '', urls: '', accountId: '186148884772', region: 'us-east-1', subject: 'DAVID_TEST', users: '' };
 	returnedResponse: SnsResponse = { HttpStatusCode: 0, MetaData: {"WAITING": "No Message Sent"} };
-	constructor(private snsService: SnsService) { };
+	constructor(private snsService: SnsService) { 
+
+     };
 
 	ngOnInit() { };
 
@@ -26,4 +28,7 @@ export class SnsMessageComponent implements OnInit {
 		console.log(JSON.stringify(response));
 		this.returnedResponse = response;
 	};
+    setSubject(subject: string){
+        this.snsMessage.subject = subject;
+    };
 }

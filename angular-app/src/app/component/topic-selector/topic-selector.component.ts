@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { SnsTopicListItem } from '../../model/sns-objects';
 import { SnsService } from '../../service/sns.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -9,15 +9,18 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./topic-selector.component.css']
 })
 export class TopicSelectorComponent implements OnInit {
+    @Input()
+    initialValue: string;
+
     @Output()
     topicChanged = new EventEmitter<string>();
     
     topics: SnsTopicListItem[];
     constructor(private snsService: SnsService) { 
-        snsService.getTopics()
-        .subscribe(
-            response => { this.topics = response; },
-            (err: HttpErrorResponse) => { console.log("An error has occurred"); });
+        snsService.topics
+            .subscribe(
+                response => { this.topics = response; },
+                (err: HttpErrorResponse) => { console.log("An error has occurred"); });
     }
 
     ngOnInit() {
