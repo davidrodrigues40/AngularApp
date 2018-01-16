@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SnsResponse, SnsSubscription } from '../../model/sns-objects';
+import { SnsResponse, SnsSubscription, SnsTopicListItem } from '../../model/sns-objects';
 import { SnsService } from '../../service/sns.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -11,7 +11,13 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class SnsSubscribeComponent implements OnInit {
     snsResponse: SnsResponse = { HttpStatusCode: 0, MetaData: { "WAITING": "No Subscription Sent" } };
     subscription: SnsSubscription = { endpoint: '', protocol: '',  accountId: '186148884772', region: 'us-east-1', subject: '' };
-    constructor(private snsService: SnsService) { }
+    topics: SnsTopicListItem[];
+    constructor(private snsService: SnsService) { 
+        snsService.getTopics()
+            .subscribe(
+                response => { this.topics = response; },
+                (err: HttpErrorResponse) => { console.log("An error has occurred"); });
+    }
 
     ngOnInit() {
     }
@@ -24,5 +30,8 @@ export class SnsSubscribeComponent implements OnInit {
     subscriptionSubmitted(response){
         console.log(JSON.stringify(response));
 		this.snsResponse = response;
+    };
+    setSubject(subject: string){
+        this.subscription.subject = subject;
     };
 }

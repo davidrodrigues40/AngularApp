@@ -5,10 +5,10 @@
     <div class="col-5">
         <div class="row">
             <div class="label">
-                Subject:
+                Topic:
             </div>
             <div class="input">
-                <input type="text" [(ngModel)]="subscription.subject" />
+                <app-topic-selector (topicChanged)="setSubject($event)"></app-topic-selector>
             </div>
         </div>
         <div class="row">

@@ -1,0 +1,4 @@
+<select (change)="changeTopic($event.target.value)">
+    <option vlaue="">-- Select Topoic --</option>
+    <option *ngFor="let topic of topics" value="{{topic.DisplayName}}">{{topic.DisplayName}}</option>
+</select>

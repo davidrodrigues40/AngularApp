@@ -13,6 +13,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { SnsTopicComponent } from './component/sns-topic/sns-topic.component';
 import { SnsResponseHandler } from './component/sns-response-handler/sns-response-handler.component';
 import { SnsSubscribeComponent } from './component/sns-subscribe/sns-subscribe.component';
+import { TopicSelectorComponent } from './component/topic-selector/topic-selector.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { SnsSubscribeComponent } from './component/sns-subscribe/sns-subscribe.c
     SnsMenuComponent,
     SnsTopicComponent,
     SnsResponseHandler,
-    SnsSubscribeComponent
+    SnsSubscribeComponent,
+    TopicSelectorComponent
   ],
   imports: [
     BrowserModule,

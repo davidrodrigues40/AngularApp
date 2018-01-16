@@ -37,7 +37,7 @@ button.go:hover {
     width: 200px;
 }
 
-.input input {
+.input input, .input select {
     width: 200px;
 }
 

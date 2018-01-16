@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { Http } from '@angular/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { SnsMessage, SnsTopic, SnsSubscription, SnsResponse } from '../model/sns-objects';
+import { SnsMessage, SnsTopic, SnsSubscription, SnsResponse, SnsTopicListItem } from '../model/sns-objects';
 
 @Injectable()
 export class SnsService {
@@ -12,7 +12,12 @@ export class SnsService {
 	constructor(private httpClient: HttpClient) {
 		this.headers = new HttpHeaders();
 		this.headers = this.headers.set('Origin', 'http://localhost:4200');
-	}
+    }
+    
+    getTopics(): Observable<SnsTopicListItem[]> {
+        let url: string = this.apiUrl + 'topic';
+        return this.httpClient.get<SnsTopicListItem[]>(url, { headers: this.headers });
+    };
 
 	postMessage(message: SnsMessage): Observable<SnsResponse> {
 		let url: string = this.apiUrl + 'publish/message';

@@ -22,3 +22,8 @@ export class SnsResponse {
     HttpStatusCode: number;
     MetaData: object;
 };
+
+export class SnsTopicListItem {
+    DisplayName: string;
+    TopicArn: string;
+}
