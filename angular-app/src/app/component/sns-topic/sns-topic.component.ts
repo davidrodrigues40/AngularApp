@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SnsService } from '../../service/sns.service';
-import { SnsTopic, SnsResponse } from '../../model/sns-objects';
+import { SnsTopicRequest, SnsResponse } from '../../model/sns-objects';
 import { HttpErrorResponse } from '@angular/common/http/src/response';
 
 @Component({
@@ -9,7 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http/src/response';
 	styleUrls: ['./sns-topic.component.css']
 })
 export class SnsTopicComponent implements OnInit {
-	topic: SnsTopic = { accountId: '186148884772', region: 'us-east-1', subject: '' };
+	topic: SnsTopicRequest = { accountId: '186148884772', region: 'us-east-1', subject: '' };
 	snsResponse: SnsResponse = { HttpStatusCode: 0, MetaData: { "WAITING": "No Topic Sent" } };
 
 	constructor(private snsService: SnsService) { }

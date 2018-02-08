@@ -4,7 +4,7 @@ import 'rxjs/Rx';
 import { of } from 'rxjs/observable/of';
 import { Http } from '@angular/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { SnsMessage, SnsTopic, SnsSubscription, SnsResponse, SnsTopicListItem } from '../model/sns-objects';
+import { SnsMessageRequest, SnsTopicRequest, SnsSubscriptionRequest, SnsResponse, SnsTopicListItem, SnsUnsubscriptionRequest } from '../model/sns-objects';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
@@ -23,25 +23,31 @@ export class SnsService {
         return this.httpClient.get<SnsTopicListItem[]>(url, {headers: this.headers });
     }
 
-	postMessage(message: SnsMessage): Observable<SnsResponse> {
+	postMessage(request: SnsMessageRequest): Observable<SnsResponse> {
 		let url: string = this.apiUrl + 'publish/message';
-		return this.post(url, message);
+		return this.post(url, request);
 	};
 
-	postTopic(topic: SnsTopic): Observable<SnsResponse> {
+	postTopic(request: SnsTopicRequest): Observable<SnsResponse> {
 		let url: string = this.apiUrl + 'publish/topic';
-		return this.post(url, topic);
+		return this.post(url, request);
 	};
 
-	postSubscription(subscription: SnsSubscription): Observable<SnsResponse> {
+	postSubscription(request: SnsSubscriptionRequest): Observable<SnsResponse> {
 		let url: string = this.apiUrl + 'subscribe';
-		return this.post(url, subscription);
-	};
+		return this.post(url, request);
+    };
 
-	post(url: string, obj: Object): Observable<SnsResponse> {
-		console.log(JSON.stringify(obj));
+    postUnsubscription(request: SnsUnsubscriptionRequest): Observable<SnsResponse> 
+    {
+        let url : string = this.apiUrl + 'unsubscribe';
+        return this.post(url, request);
+    };
+    
+	post(url: string, payload: Object): Observable<SnsResponse> {
+		console.log(JSON.stringify(payload));
 		console.log(url);
-		return this.httpClient.post<SnsResponse>(url, obj,
+		return this.httpClient.post<SnsResponse>(url, payload,
 			{
 				headers: this.headers
 			});

@@ -5,6 +5,7 @@ import { SnsTesterComponent } from './component/sns-tester/sns-tester.component'
 import { SnsMessageComponent } from './component/sns-message/sns-message.component';
 import { SnsTopicComponent } from './component/sns-topic/sns-topic.component';
 import { SnsSubscribeComponent } from './component/sns-subscribe/sns-subscribe.component';
+import { SnsUnsubscribeComponent } from './component/sns-unsubscribe/sns-unsubscribe.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'sns-message', component: SnsMessageComponent },
   { path: 'sns-topic', component: SnsTopicComponent },
   { path: 'sns-subscribe', component: SnsSubscribeComponent},
+  { path: 'sns-unsubscribe', component: SnsUnsubscribeComponent},
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ]
 

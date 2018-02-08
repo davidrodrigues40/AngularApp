@@ -14,6 +14,7 @@ import { SnsTopicComponent } from './component/sns-topic/sns-topic.component';
 import { SnsResponseHandler } from './component/sns-response-handler/sns-response-handler.component';
 import { SnsSubscribeComponent } from './component/sns-subscribe/sns-subscribe.component';
 import { TopicSelectorComponent } from './component/topic-selector/topic-selector.component';
+import { SnsUnsubscribeComponent } from './component/sns-unsubscribe/sns-unsubscribe.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { TopicSelectorComponent } from './component/topic-selector/topic-selecto
     SnsTopicComponent,
     SnsResponseHandler,
     SnsSubscribeComponent,
-    TopicSelectorComponent
+    TopicSelectorComponent,
+    SnsUnsubscribeComponent
   ],
   imports: [
     BrowserModule,

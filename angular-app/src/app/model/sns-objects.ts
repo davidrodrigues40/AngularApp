@@ -1,10 +1,10 @@
-export class SnsTopic {
+export class SnsTopicRequest {
     region: string;
     accountId: string;
     subject: string;
 }
 
-export class SnsMessage extends SnsTopic
+export class SnsMessageRequest extends SnsTopicRequest
 {
     deploymentName: string;
     urls: string;
@@ -12,18 +12,24 @@ export class SnsMessage extends SnsTopic
     subject: string;
 };
 
-export class SnsSubscription extends SnsTopic
+export class SnsUnsubscriptionRequest extends SnsTopicRequest
 {
     endpoint: string;
+};
+
+export class SnsSubscriptionRequest extends SnsUnsubscriptionRequest
+{
     protocol: string;
 };
 
-export class SnsResponse {
+export class SnsResponse 
+{
     HttpStatusCode: number;
     MetaData: object;
 };
 
-export class SnsTopicListItem {
+export class SnsTopicListItem 
+{
     DisplayName: string;
     TopicArn: string;
 }
