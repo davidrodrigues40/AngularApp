@@ -2,6 +2,7 @@
 body {
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12pt;
 }
 
 button.go {
@@ -41,9 +42,13 @@ button.go:hover {
     width: 200px;
 }
 
-.col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-12 {
+.col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-12 {
     display: inline-block;
     vertical-align: top;
+}
+
+.col-2 {
+    width: 16%;
 }
 
 .col-3 {
@@ -74,6 +79,14 @@ button.go:hover {
     width: 72%;
 }
 
+.col-10 {
+    width: 80%;
+}
+
 .col-12 {
     width: 100%;
+}
+
+.subscription {
+    font-size: 11pt;
 }

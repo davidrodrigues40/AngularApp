@@ -1,3 +1,5 @@
+import { SnsTopicComponent } from "../component/sns-topic/sns-topic.component";
+
 export class SnsTopicRequest {
     region: string;
     accountId: string;
@@ -12,13 +14,14 @@ export class SnsMessageRequest extends SnsTopicRequest
     subject: string;
 };
 
-export class SnsUnsubscriptionRequest extends SnsTopicRequest
+export class SnsUnsubscribeRequest
 {
-    endpoint: string;
+    subscriptionArn: string;
 };
 
-export class SnsSubscriptionRequest extends SnsUnsubscriptionRequest
+export class SnsSubscriptionRequest extends SnsTopicRequest
 {
+    endpoint: string
     protocol: string;
 };
 
@@ -31,5 +34,14 @@ export class SnsResponse
 export class SnsTopicListItem 
 {
     DisplayName: string;
+    TopicArn: string;
+}
+
+export class SnsSubscription
+{
+    Endpoint: string;
+    Owner: string;
+    Protocol: string;
+    SubscriptionArn: string;
     TopicArn: string;
 }

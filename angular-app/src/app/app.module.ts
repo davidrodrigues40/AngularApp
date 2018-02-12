@@ -15,6 +15,7 @@ import { SnsResponseHandler } from './component/sns-response-handler/sns-respons
 import { SnsSubscribeComponent } from './component/sns-subscribe/sns-subscribe.component';
 import { TopicSelectorComponent } from './component/topic-selector/topic-selector.component';
 import { SnsUnsubscribeComponent } from './component/sns-unsubscribe/sns-unsubscribe.component';
+import { SnsSubscriptionsComponent } from './component/sns-subscriptions/sns-subscriptions.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { SnsUnsubscribeComponent } from './component/sns-unsubscribe/sns-unsubsc
     SnsResponseHandler,
     SnsSubscribeComponent,
     TopicSelectorComponent,
-    SnsUnsubscribeComponent
+    SnsUnsubscribeComponent,
+    SnsSubscriptionsComponent
   ],
   imports: [
     BrowserModule,

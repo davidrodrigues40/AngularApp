@@ -17,10 +17,16 @@ export class TopicSelectorComponent implements OnInit {
     
     topics: SnsTopicListItem[];
     constructor(private snsService: SnsService) { 
-        snsService.topics
-            .subscribe(
-                response => { this.topics = response; },
-                (err: HttpErrorResponse) => { console.log("An error has occurred"); });
+        snsService.loadTopics().subscribe(
+            response => { 
+                this.setLocalStorage(response);                    
+                this.topics = response },
+            (err: HttpErrorResponse) => { console.log("An error has occurred"); });
+    }
+
+    private setLocalStorage(response: SnsTopicListItem[]) {
+        if (localStorage.getItem('topics') === null)
+            localStorage.setItem('topics', JSON.stringify(response));
     }
 
     ngOnInit() {
