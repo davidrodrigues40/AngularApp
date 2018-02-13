@@ -10,10 +10,10 @@ import { SnsUnsubscribeComponent } from './component/sns-unsubscribe/sns-unsubsc
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'sns', component: SnsTesterComponent },
-  { path: 'sns-message', component: SnsMessageComponent },
-  { path: 'sns-topic', component: SnsTopicComponent },
-  { path: 'sns-subscribe', component: SnsSubscribeComponent},
-  { path: 'sns-unsubscribe', component: SnsUnsubscribeComponent},
+  { path: 'sns/message', component: SnsMessageComponent },
+  { path: 'sns/topic', component: SnsTopicComponent },
+  { path: 'sns/subscribe', component: SnsSubscribeComponent},
+  { path: 'sns/unsubscribe', component: SnsUnsubscribeComponent},
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ]
 
