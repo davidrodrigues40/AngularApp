@@ -24,7 +24,15 @@ button.go:hover {
   }
 
 .row {
-    margin: 20px 0;
+    padding: 10px;
+}
+
+.row .action-column {
+    text-align: right;
+}
+
+.heading {
+    margin-top: 10px;
 }
 
 .label,

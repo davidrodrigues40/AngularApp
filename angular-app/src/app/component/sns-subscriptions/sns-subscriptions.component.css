@@ -3,15 +3,11 @@
     vertical-align: middle;
     line-height: 35px;
 }
-.row, .heading {
-    border-bottom: 1px solid #369;
-    margin: 0;
-}
 
 h3 {
     margin: 0;
 }
 
 .row {
-    padding: 10px;
+    border-bottom: 1px solid #369;
 }
