@@ -18,6 +18,8 @@ import { SnsUnsubscribeComponent } from './component/sns-unsubscribe/sns-unsubsc
 import { SnsSubscriptionsComponent } from './component/sns-subscriptions/sns-subscriptions.component';
 import { ReportService } from './service/report-service.service';
 import { ReportsComponent } from './component/reports/reports.component';
+import { ReportViewerComponent } from './component/report-viewer/report-viewer.component';
+import { FilterService } from './service/filter-service.service';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { ReportsComponent } from './component/reports/reports.component';
     TopicSelectorComponent,
     SnsUnsubscribeComponent,
     SnsSubscriptionsComponent,
-    ReportsComponent
+    ReportsComponent,
+    ReportViewerComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,7 @@ import { ReportsComponent } from './component/reports/reports.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [SnsService, ReportService, HttpClient],
+  providers: [SnsService, ReportService, FilterService, HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

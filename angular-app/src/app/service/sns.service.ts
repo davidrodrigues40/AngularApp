@@ -22,7 +22,7 @@ export class SnsService {
             return Observable.of(JSON.parse(localStorage.getItem('topics')));
             
         let url: string = this.apiUrl + 'topic';
-        return this.httpClient.get<SnsTopicListItem[]>(url, {headers: this.headers });
+        return this.httpClient.get<SnsTopicListItem[]>(url, { headers: this.headers });
     }
 
 	postMessage(request: SnsMessageRequest): Observable<SnsResponse> {

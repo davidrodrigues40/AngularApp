@@ -8,6 +8,6 @@ h3 {
     margin: 0;
 }
 
-.row {
+.row, .heading {
     border-bottom: 1px solid #369;
 }

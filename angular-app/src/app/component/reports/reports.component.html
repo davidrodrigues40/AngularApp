@@ -1,33 +1,56 @@
-<div class="container col-12">
-    <div class="col-6">
-        <div class="row heading">
-            <div class="col-2">
-                <h3>ID</h3>
-            </div>
-            <div class="col-5">
-                <h3>Title</h3>
-            </div>
-            <div class="col-5">
-                <h3>&nbsp;</h3>
-            </div>
+<div class="col-12">
+    <div [ngSwitch]="viewReport">
+        <div class="col-12" *ngSwitchCase="true">
+            <app-report-viewer [reportId]="viewReportId" [framework]="framework" (change)="gotReport($event)"></app-report-viewer>
         </div>
-        <div class="row" *ngFor="let report of reports">
-            <div class="col-2">{{report.Id}}</div>
-            <div class="col-5">{{report.Title}}</div>
-            <div class="col-5 action-column">
-                <button class="go" (click)="getDetails(report)">Details</button>
-                <button class="go">View</button>
+        <div class="col-12" *ngSwitchCase="false">
+            <div>
+                Framework:
+                <select [(ngModel)]="selectedFramework" (change)="changeFramework()">
+                    <option *ngFor="let framework of frameworkFilters" value="{{framework}}">{{framework}}</option>
+                </select>
             </div>
-        </div>
-    </div>
-    <div class="col-6">
-        <div [ngSwitch]="reportSelected">
-            <div *ngSwitchCase="true">
-                <div class="row heading"><label>Title:</label> {{selectedReport.Title}}</div> 
-                <div class="row"><label>ID:</label> {{selectedReport.Id}}</div>
-                <div class="row"><label>Author:</label> {{selectedReport.Author</div>
-                <div class="row"><label>Published On:</label> {{selectedReport.PublishedOn}}</div>
-                <div class="row"><label>Page Count: </label>{{ selectedReport.PageCount}}</div>
+            <div class="col-12">
+                <div class="col-6">
+                    <div class="row heading">
+                        <div class="col-2">
+                            <h3>ID</h3>
+                        </div>
+                        <div class="col-5">
+                            <h3>Title</h3>
+                        </div>
+                        <div class="col-5">
+                            <h3>&nbsp;</h3>
+                        </div>
+                    </div>
+                    <div class="row" *ngFor="let report of reports; trackBy: getFramework">
+                        <div class="col-2">{{report.Id}}</div>
+                        <div class="col-5">{{report.Title}}</div>
+                        <div class="col-5 action-column">
+                            <button class="go" (click)="getDetails(report.Id)">Details</button>
+                            <button class="go" (click)="getReport(report.Id)">View</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div [ngSwitch]="detailsLoading">
+                        <div class='loading-container' *ngSwitchCase="true">
+                            <img src="assets/images/loading.gif" />
+                        </div>
+                    </div>
+                    <div [ngSwitch]="reportSelected">
+                        <div *ngSwitchCase="true">
+                            <div class="row heading">
+                                <label>Title:</label> {{selectedReport.Title}}</div>
+                            <div class="row">
+                                <label>Author(s):</label> {{selectedReport.Author}}</div>
+                            <div class="row">
+                                <label>Published On:</label> {{selectedReport.PublishedOn}}</div>
+                            <div class="row">
+                                <label>Page Count: </label>{{ selectedReport.PageCount}}</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

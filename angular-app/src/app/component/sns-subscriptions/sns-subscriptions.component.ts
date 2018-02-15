@@ -3,7 +3,6 @@ import { SnsSubscription, SnsTopicRequest, SnsUnsubscribeRequest, SnsResponse } 
 import { EventEmitter } from 'events';
 import { SnsService } from '../../service/sns.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { subscribeOn } from 'rxjs/operator/subscribeOn';
 import { HttpResponse } from 'selenium-webdriver/http';
 
 @Component({

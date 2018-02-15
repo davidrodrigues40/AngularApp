@@ -3,6 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { ReportListItem } from '../model/report-list-item';
 import { ReportDetail } from '../model/report-detail';
+import { Report } from '../model/report';
+import { Filter, FilterTypes } from '../model/filter';
+import { element } from 'protractor';
 
 @Injectable()
 export class ReportService {
@@ -13,11 +16,39 @@ export class ReportService {
         this.headers = this.headers.set('Origin', 'http://localhost:4200');
     }
 
-    getAll(): Observable<ReportListItem[]> {
-        return this.httpClient.get<ReportListItem[]>(this.apiUrl, { headers: this.headers });
+    getAll(framework: string): Observable<ReportListItem[]> {
+        if (framework === null)
+            framework = 'reports';
+        
+        let uri = this.apiUrl + '?framework='+framework;
+        return this.httpClient.get<ReportListItem[]>(uri, { headers: this.headers });
     };
 
-    getById(id: number): Observable<ReportDetail> {
-        return this.httpClient.get<ReportDetail>(this.apiUrl + '/' + id.toString() + '/details');
-    }
+    getReportDetails(id: number, framework: string): Observable<ReportDetail> {
+        if(framework === null)
+            framework = 'reports';
+        console.log(framework);
+        let uri: string = this.apiUrl + '/' + id.toString() + '/details?framework=' + framework;
+        return this.httpClient.get<ReportDetail>(uri);
+    };
+
+    getReport(id: number): Observable<Report> {
+        return this.httpClient.get<Report>(this.apiUrl + '/' + id.toString());
+    };
+
+    getReportWithFilters(id: number, filters: Filter[]){
+        let url: string = this.apiUrl + '/' + id.toString();
+        if(filters == null)
+            return this.getReport(id);
+
+        filters.forEach(element => {
+            if(url.indexOf('?') === -1)
+                url += '?';
+            else
+                url += '&';
+
+            url += FilterTypes[element.type] + '=' + element.value;
+        });
+        return this.httpClient.get<Report>(url);
+    };
 }
