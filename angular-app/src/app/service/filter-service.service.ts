@@ -27,7 +27,6 @@ export class FilterService {
 
     private getFilter(type: string): Observable<string[]> {
         let filterUrl: string = this.url + type;
-        console.log(filterUrl);
         return this.httpClient.get<string[]>(filterUrl);
     };
 }

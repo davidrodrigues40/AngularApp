@@ -34,7 +34,7 @@ export class ReportsComponent implements OnInit {
     getDetails(id: number){
         this.detailsLoading = true;
         this.reportService.getReportDetails(id, this.framework)
-            .subscribe(response => this.showDetails(response), error => alert(error));
+            .subscribe(response => this.showDetails(response), error => alert(JSON.stringify(error)));
     };
 
     showDetails(response){
@@ -45,12 +45,12 @@ export class ReportsComponent implements OnInit {
 
     loadReports(framework: string){
         this.reportService.getAll(framework)
-            .subscribe(response => this.reportLoaded(response), error => alert(error))
+            .subscribe(response => this.reportLoaded(response), error => alert(JSON.stringify(error)));
     };
 
     reportLoaded(response) {
         this.reports = response
-    }
+    };
 
     getReport(id: number){
         this.viewReport = true;

@@ -18,8 +18,12 @@ export class ReportViewerComponent implements OnInit {
 
     @Output() change: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+    colorsLoaded: boolean = false;
+    bodyFiltersLoaded: boolean = false;
+    titleFiltersLoaded: boolean = false;
+    report: Report = null;
+    pageLoading: boolean = false;
     filters: Array<Filter> = new Array<Filter>();
-    report: Report = new Report();
     colors: string[];
     bodyFilters: string[];
     selectedBodyFilter: string = 'none';
@@ -30,6 +34,7 @@ export class ReportViewerComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.setPageStatus();
         this.loadColors();
         this.loadBodyFilters();
         this.loadTitleFilters();
@@ -40,6 +45,11 @@ export class ReportViewerComponent implements OnInit {
             let changedProp = changes[propName];
             this.pageLoad();
         }
+    };
+
+    setPageStatus() {
+        var pageLoaded =  this.colorsLoaded && this.bodyFiltersLoaded && this.titleFiltersLoaded && this.report != null;
+        this.pageLoading = !pageLoaded;
     };
 
     //#region change Filters
@@ -86,8 +96,11 @@ export class ReportViewerComponent implements OnInit {
 
     //#region Load Report
     loadFilteredReport(){
+        this.report = null;
+        this.setPageStatus();
+        
         this.service.getReportWithFilters(this.reportId, this.filters)
-            .subscribe(response => this.reportLoaded(response), error => alert(JSON.stringify(error)));
+            .subscribe(response => this.reportLoaded(response), error => alert(JSON.stringify(error)));        
     }
 
     pageLoad() {
@@ -112,31 +125,54 @@ export class ReportViewerComponent implements OnInit {
 
     //#region Load Filters
     loadColors() {
-        if (!this.colors) {
+        if (!this.colorsLoaded) {
             this.filterService.getColors()
-                .subscribe(response => this.colors = response, error => alert(JSON.stringify(error)));
+                .subscribe(response => this.gotColors(response), error => alert(JSON.stringify(error)));
         };
     };
 
+    gotColors(response) {
+        this.colors = response;
+        this.colorsLoaded = true;
+        this.setPageStatus();
+    }
+
     loadBodyFilters() {
-        if(!this.bodyFilters)
+        if(!this.bodyFiltersLoaded)
             this.filterService.getBodyFilters()
-                .subscribe(response => this.bodyFilters = response, error => alert(JSON.stringify(error)));
+                .subscribe(response => this.gotBodyFilters(response), error => alert(JSON.stringify(error)));
     };
 
+    gotBodyFilters(response){
+        this.bodyFilters = response;
+        this.bodyFiltersLoaded = true;
+        this.setPageStatus();
+    }
+
     loadTitleFilters() {
-        if(!this.titleFilters)
+        if(!this.titleFiltersLoaded)
             this.filterService.getTitleFilters()
-                .subscribe(response => this.titleFilters = response, error => alert(JSON.stringify(error)));
+                .subscribe(response => this.gotTitleFilters(response), error => alert(JSON.stringify(error)));
     };
+
+    gotTitleFilters(response){
+        this.titleFilters = response;
+        this.titleFiltersLoaded = true;
+        this.setPageStatus();
+    }
 
     //#endregion
 
-    reportLoaded(response) {
-        let formattedReport: string = response.Body.replace('\\r\\n', '<br />');
-     
+    reportLoaded(response: Report) {
+        let body: string = JSON.stringify(response.Body);
+        body = body.replace(/\\r\\n/g, "<br />");
+
+        console.log(body);
+        response.Body = body;
+
         this.report = response;
         this.change.emit(true);
+        this.setPageStatus();
     };
 
     closeReport() {

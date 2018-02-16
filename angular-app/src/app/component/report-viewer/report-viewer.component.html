@@ -1,29 +1,35 @@
 <div class="col-12">
-    <div class="row">
-        <div class="col-1">
-            <button class="go" (click)="closeReport()">Close</button>
+    <div [ngSwitch]="pageLoading">
+        <div *ngSwitchCase="true">
+            <img src="assets/images/loading.gif" />
         </div>
-        <div class="col-3 col-h-35">
-            Color:
-            <select [(ngModel)]="report.Color" (change)="changeColor(report.Color)">
-                <option *ngFor="let color of colors" value="{{color.toLowerCase()}}">{{color}}</option>
-            </select>
-        </div>
-        <div class="col-3 col-h-35">
-            Body Format:
-            <select [(ngModel)]="selectedBodyFilter" (change)="changeBodyFilter()">
-                <option *ngFor="let filter of bodyFilters" value="{{filter}}">{{filter}}</option>
-            </select>
-        </div>
-        <div class="col-3 col-h-35">
-            Title Format:
-            <select [(ngModel)]="selectedTitleFilter" (change)="changeTitleFilter()">
-                <option *ngFor="let filter of titleFilters" value="{{filter}}">{{filter}}</option>
-            </select>
+        <div class="row" *ngSwitchCase="false">
+            <div class="col-1">
+                <button class="go" (click)="closeReport()">Close</button>
+            </div>
+            <div class="col-3 col-h-35">
+                Color:
+                <select [(ngModel)]="report.Color" (change)="changeColor(report.Color)">
+                    <option *ngFor="let color of colors" value="{{color.toLowerCase()}}">{{color}}</option>
+                </select>
+            </div>
+            <div class="col-3 col-h-35">
+                Body Format:
+                <select [(ngModel)]="selectedBodyFilter" (change)="changeBodyFilter()">
+                    <option *ngFor="let filter of bodyFilters" value="{{filter}}">{{filter}}</option>
+                </select>
+            </div>
+            <div class="col-3 col-h-35">
+                Title Format:
+                <select [(ngModel)]="selectedTitleFilter" (change)="changeTitleFilter()">
+                    <option *ngFor="let filter of titleFilters" value="{{filter}}">{{filter}}</option>
+                </select>
+            </div>
+            <div class="title">
+                <h2>{{report.Title}}</h2>
+            </div>
+            <div [style.color]="report.Color" [innerHTML]="report.Body"></div>
         </div>
     </div>
-    <div class="title">
-        <h2>{{report.Title}}</h2>
-    </div>
-    <div [style.color]="report.Color">{{report.Body}}</div>
+
 </div>

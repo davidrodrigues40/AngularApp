@@ -27,7 +27,7 @@ export class ReportService {
     getReportDetails(id: number, framework: string): Observable<ReportDetail> {
         if(framework === null)
             framework = 'reports';
-        console.log(framework);
+            
         let uri: string = this.apiUrl + '/' + id.toString() + '/details?framework=' + framework;
         return this.httpClient.get<ReportDetail>(uri);
     };

@@ -16,17 +16,17 @@
                         <div class="col-2">
                             <h3>ID</h3>
                         </div>
-                        <div class="col-5">
+                        <div class="col-7">
                             <h3>Title</h3>
                         </div>
-                        <div class="col-5">
+                        <div class="col-3">
                             <h3>&nbsp;</h3>
                         </div>
                     </div>
                     <div class="row" *ngFor="let report of reports; trackBy: getFramework">
                         <div class="col-2">{{report.Id}}</div>
-                        <div class="col-5">{{report.Title}}</div>
-                        <div class="col-5 action-column">
+                        <div class="col-7">{{report.Title}}</div>
+                        <div class="col-3 action-column">
                             <button class="go" (click)="getDetails(report.Id)">Details</button>
                             <button class="go" (click)="getReport(report.Id)">View</button>
                         </div>

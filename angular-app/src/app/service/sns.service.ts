@@ -52,8 +52,6 @@ export class SnsService {
     }
     
 	post(url: string, payload: Object): Observable<SnsResponse> {
-		console.log(JSON.stringify(payload));
-		console.log(url);
 		return this.httpClient.post<SnsResponse>(url, payload,
 			{
 				headers: this.headers
